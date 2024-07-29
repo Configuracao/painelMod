@@ -47,7 +47,7 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="username" class="form-label">Nome de usuário</label>
+                    <label for="username" class="form-label">Nombre de usuário</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-person-fill"></i>
                       <input type="text" class="form-control" id="username" name="username" value="<%= it.user.username %>">
@@ -71,7 +71,7 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirme a senha</label>
+                    <label for="confirm_password" class="form-label">Confirme Contraseña</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-lock-fill"></i>
                       <input type="password" class="form-control" id="confirm_password" name="confirm_password">
@@ -81,11 +81,11 @@
                     </div>
                   </div>
                   <div class="d-flex justify-content-center ">
-                    <button type="submit" class="btn btn-dark w-100 __btn__save">Salvar</button>
+                    <button type="submit" class="btn btn-dark w-100 __btn__save">Guardar</button>
                   </div>
                 </div>
                 <div class="col-md-6 mb-3">
-                  <label for="email" class="form-label">Credenciais</label>
+                  <label for="email" class="form-label">Credencial</label>
                   <textarea class="form-control mb-3" id="credentials" style="height: 180px;" name="credentials" readonly></textarea>
                   <div class="d-flex justify-content-center ">
                     <button type="submit" class="btn btn-dark w-100 __btn__copy">Copiar</button>
@@ -123,7 +123,7 @@
       credentials.setSelectionRange(0, 99999)
       document.execCommand('copy')
       document.getSelection().removeAllRanges()
-      showToastSuccess('Copiado com sucesso!')
+      showToastSuccess('Copiado con exito!')
     })
 
     const btnSave = document.querySelector('.__btn__save')
@@ -135,16 +135,16 @@
       const confirm_password = document.getElementById('confirm_password').value || null
 
       if (password !== confirm_password) {
-        showToastError('As senhas não conferem!')
+        showToastError('Contraseña no son compatibles!')
         return
       }
 
       if (password && password.length < 6) {
-        showToastError('Senha muito curta, deve conter pelo menos 6 caracteres!')
+        showToastError('Contraseña muy corta, debe tener al menos 6 caracteres!')
         return
       }
 
-      // showToastInfo('Salvando perfil...')
+      // showToastInfo('Guardando perfil...')
 
       try {
 
@@ -166,7 +166,7 @@
         if (csrfTokenRefresh) csrfToken = csrfTokenRefresh;
 
         if (response.status === 200) {
-          showToastSuccess('Perfil salvo com sucesso!')
+          showToastSuccess('Perfil guardado con exito!')
           return;
         }
 
@@ -178,7 +178,7 @@
         }
 
       } catch (err) {
-        showToastError('Não foi possível alterar seus dados')
+        showToastError('No fue posible alterar sus datos')
       }
     })
 
