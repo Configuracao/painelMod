@@ -24,13 +24,13 @@
     <li class="nav-item">
       <a href="/configs" target="_self" class="nav-link text-white <%~ it.active === 'configs' ? 'active' : '' %>">
         <i class="bi bi-gear"></i>
-        <span>Configurações</span>
+        <span>Configuraciones</span>
       </a>
     </li>
     <li class="nav-item">
       <a href="/application" target="_self" class="nav-link text-white <%~ it.active === 'application' ? 'active' : '' %>">
         <i class="bi bi-phone"></i>
-        <span>Aplicativo</span>
+        <span>Aplicacion</span>
       </a>
     </li>
     <li class="nav-item">
@@ -54,7 +54,7 @@
     <li class="nav-item">
       <a href="/logout" target="_self" class="nav-link text-white">
         <i class="bi bi-box-arrow-left"></i>
-        <span>Sair</span>
+        <span>Salir</span>
       </a>
     </li>
   </ul>
