@@ -13,13 +13,13 @@ class ConfigExportFile {
         a.href = url;
         a.click();
         URL.revokeObjectURL(url);
-        showToastSuccess('Opa! configuração exportada com sucesso!');;
+        showToastSuccess('Configuracion exportada con exito!');;
     }
 }
 
 class ConfigExportUrl {
     async export(data) {
-        showToastInfo('Aguarde enquanto a configuração é exportada...');
+        showToastInfo('Espere mientras se exporta la configuración....');
         const form = new FormData();
         const file = new File([data], 'config.json', { type: 'application/json' });
         form.append('file', file);
@@ -33,10 +33,10 @@ class ConfigExportUrl {
             if (result.status != 200)
                 throw new Error();
 
-            showToastSuccess('Opa! configuração exportada com sucesso!');
+            showToastSuccess('Upa! Configuracion exportada con exito!');
             return result.data;
         } catch (e) {
-            showToastError('Ops! Não foi possível exportar a configuração!');
+            showToastError('Ups! No fue posible exportar la Configuracion!');
         }
     }
 }
@@ -57,11 +57,11 @@ class ConfigExportApp {
             const response = await fetch('/app_config/export/app', options);
             const result = await response.json();
             if (result.config) {
-                showToastSuccess('Opa! configuração exportada com sucesso!');
+                showToastSuccess('Upa! Configuracion exportada con exito!');
                 return `vpn://${result.config}`
             }
         } catch (e) {
-            showToastError('Ops! Não foi possível importar a configuração!');
+            showToastError('No fue posible importar la Configuracion!');
         }
     }
 
