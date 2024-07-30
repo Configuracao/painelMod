@@ -14,11 +14,11 @@ class CategoryTable {
                         <input class="form-check form-check-input check-item" type="checkbox">
                     </th>
                     <th>ID</th>
-                    <th>NOME</th>
-                    <th>ORDEM</th>
-                    <th scope="col">COR</th>
-                    <th>STATUS</th>
-                    <th>AÇÕES</th>
+                    <th>NOMBRE</th>
+                    <th>ORDEN</th>
+                    <th scope="col">COLOR</th>
+                    <th>ESTADO</th>
+                    <th>ACCION</th>
                 </tr>
             </thead>
             <tbody>
