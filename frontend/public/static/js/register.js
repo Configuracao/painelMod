@@ -56,22 +56,22 @@ class RegisterForm {
     async #validate() {
 
         if (this.formData.get('password') != this.formData.get('confirm_password')) {
-            throw new Error('As senhas não coincidem.')
+            throw new Error('Las contraseñas no coinciden.')
         }
 
         const pattern = /^[a-zA-Z0-9@]+$/;
         const username = this.formData.get('username');
 
         if (!pattern.test(username)) {
-            throw new Error('Esse nome de usuario não e valido')
+            throw new Error('nombre de usuario invalido')
         }
 
         if (username.length < 6) {
-            throw new Error('Use um nome de usuario maior')
+            throw new Error('Use usuario con mas caracteres')
         }
 
         if (this.formData.get('password').length < 6) {
-            throw new Error('Use uma senha maior')
+            throw new Error('Use contraseña con mas caracteres')
         }
 
     }
@@ -93,41 +93,41 @@ class RegisterModalSuccess {
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header">
-                        <h5 class="modal-title">Parabéns</h5>
+                        <h5 class="modal-title">Felicidades</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="text-center">
                             <img src="https://cdn-icons-png.flaticon.com/512/1642/1642423.png" width="200" height="200">
-                            <p class="fs-2 text-success">Parabéns, Acesso criado.</p>
+                            <p class="fs-2 text-success">Felicitaciones, acceso creado..</p>
                         </div>
                         <div class="form-control bg-dark text-white __data" style="overflow-y: auto;">
                             <b>
                                 <p class="mb-2">💻 Usuário: <span class="__username"></span></p>
                             </b>
                             <b>
-                                <p class="mb-2">🔑 Senha: <span class="__password"></span></p>
+                                <p class="mb-2">🔑 Contraseña: <span class="__password"></span></p>
                             </b>
                             <b>
-                                <p class="mb-2">🔗 Link de acesso: <a href="${window.location.origin + '/login'}">${window.location.origin + '/login'}</a></p>
+                                <p class="mb-2">🔗 Link de acceso: <a href="${window.location.origin + '/login'}">${window.location.origin + '/login'}</a></p>
                             </b>
                             <b>
-                                <p class="mb-2">🎞 Alterar Token: <a href="https://youtu.be/hz2zCdgvRzA" target="_blank">https://youtu.be/hz2zCdgvRzA</a></p>
+                                <p class="mb-2">🎞 Agregar Token a app: <a href="https://youtu.be/hz2zCdgvRzA" target="_blank">https://youtu.be/hz2zCdgvRzA</a></p>
                             </b>
                             <ul class="mt-4">
                                 <li>
-                                    Canal: <a href="https://t.me/DTunnelMod" class="text-reset">DTunnel</a>
+                                    Canal: <a href="https://t.me/Al3xv1p" class="text-reset">GRUPO</a>
                                 </li>
                                 <li>
-                                    Grupo: <a href="https://t.me/DTunnelModGroup" class="text-reset">DTunnelGroup</a>
+                                    Grupo: <a href="https://t.me/DTunnelModGroup" class="text-reset">GRUPO 2</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="d-flex mx-3 w-100">
-                            <button type="button" data-bs-dismiss="modal" class="btn btn-dark btn-block w-100 me-3 border">FECHAR</button>
+                            <button type="button" data-bs-dismiss="modal" class="btn btn-dark btn-block w-100 me-3 border">CERRAR</button>
                         </div>
                     </div>
                 </div>
@@ -159,22 +159,22 @@ class RegisterModalError {
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content bg-dark text-white">
                     <div class="modal-header">
-                        <h5 class="modal-title">ERRO</h5>
+                        <h5 class="modal-title">ERROR</h5>
                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <span class="__error_message">
                             <p class="fs-3 text-danger">
-                                Não foi possível criar seu acesso, entre em contato com o suporte
+                                No se puede crear su acceso, comuníquese con el soporte
                             </p>
                         </span>
                         <ul>
                             <li>
-                                Canal: <a href="https://t.me/DTunnelMod" class="text-reset">DTunnelMod</a>
+                                Canal: <a href="https://t.me/Al3xv1p" class="text-reset">DTunnelMod</a>
                             </li>
                             <li>
-                                Grupo: <a href="https://t.me/DTunnelModGroup" class="text-reset">DTunnelModGroup</a>
+                                Grupo: <a href="https://t.me/Al3xv1p" class="text-reset">GRUPO</a>
                             </li>
                         </ul>
                     </div>

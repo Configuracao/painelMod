@@ -102,7 +102,7 @@ const showToastInfo = (message) => {
 
 const uploadImage = async (e, element) => {
 
-    showToastInfo('Aguarde, enviando imagem...');
+    showToastInfo('Espere, enviando imagen...');
     //showToastWarning('Upload de imagem indisponível!');;
 
     const form = new FormData();
@@ -115,7 +115,7 @@ const uploadImage = async (e, element) => {
 
     const data = await response.json();
     if (data.status == 200) {
-        showToastSuccess('Opa! Imagem enviada com sucesso!');
+        showToastSuccess('Upa! Imagen enviada con exito!');
         if (element) element.value = data.url;
         return data.url;
     }
@@ -125,7 +125,7 @@ const uploadImage = async (e, element) => {
         return;
     }
 
-    showToastError('Ops! Não foi possível enviar a imagem!');
+    showToastError('Ops! No fue posible enviar imagen!');
 }
 
 const copyToClipboard = data => {
@@ -138,14 +138,14 @@ const copyToClipboard = data => {
 
 const showAlertConfirm = (callback, message) => {
     Swal.fire({
-        title: 'Você tem certeza?',
-        text: message || 'Você não poderá reverter isso!',
+        title: 'Estás seguro?',
+        text: message || 'No podrás revertir esto!',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#212529',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Sim',
-        cancelButtonText: 'Não',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'No',
         reverseButtons: true,
         width: '25rem'
     }).then((result) => {
