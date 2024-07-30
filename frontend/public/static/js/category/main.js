@@ -169,12 +169,12 @@ const main = async () => {
 
         if (response.status == 201) {
             category.id = data.category_id;
-            showToastSuccess(`Categoria ${category.name} criada com sucesso!`)
+            showToastSuccess(`Categoria ${category.name} creada con exito!`)
             render()
             return
         }
 
-        showToastError(`Erro ao criar categoria ${category.name}!`)
+        showToastError(`Error al crear categoria ${category.name}!`)
         categoryList.remove(category)
         render()
     }))
@@ -194,7 +194,7 @@ const main = async () => {
             });
 
             if (response.status == 204) {
-                showToastSuccess(`Categoria ${category.name} removida com sucesso!`)
+                showToastSuccess(`Categoria ${category.name} removida con exito!`)
                 return
             }
 
@@ -205,7 +205,7 @@ const main = async () => {
             }
 
         } catch (err) {
-            showToastError(`Erro ao remover categoria ${category.name}!`)
+            showToastError(`Error al remover categoria ${category.name}!`)
         }
 
         render()
@@ -230,11 +230,11 @@ const main = async () => {
         const data = await response.json();
 
         if (data.status == 200) {
-            showToastSuccess(`Categoria ${category.name} atualizada com sucesso!`)
+            showToastSuccess(`Categoria ${category.name} atualizada con exito!`)
             return;
         }
 
-        showToastError(`Erro ao atualizar categoria ${category.name}!`)
+        showToastError(`Error al actualizar categoria ${category.name}!`)
     }))
 
     const btnAdd = new ButtonAdd()
