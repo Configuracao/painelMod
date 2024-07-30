@@ -18,9 +18,9 @@ class VersionService {
         });
 
         if (response.status === 200) {
-            showToastSuccess('Notas de atualização atualizada com sucesso');
+            showToastSuccess('Notas de atualizacion actualizada con exito');
         } else {
-            showToastError('Não foi possível salvar notas de atualização');
+            showToastError('No fue posible guardar notas de atualizacion');
         }
     }
 }
@@ -34,20 +34,20 @@ export default class NotesUpdateModal {
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">NOTAS DE ATUALIZAÇÃO</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">NOTAS DE ACTUALIZACION</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="d-flex flex-column">
                             <div id="spinner" class="d-flex justify-content-center">
                                 <div class="spinner-border text-dark p-5" role="status">
-                                    <span class="visually-hidden">Carregando...</span>
+                                    <span class="visually-hidden">Cargando...</span>
                                 </div>
                             </div>
                             <div class="area">
                                 <textarea id="notes" class="form-control mb-3 mh-100" cols="30" rows="10"></textarea>
                                 <div class="mb-3 w-100">
-                                    <label class="form-label">URL DE IMAGEM</label>
+                                    <label class="form-label">URL DE IMAGEN</label>
                                     <div class="input-group">
                                         <input id="image" type="text" class="form-control">
                                         <button id="uploadImage" type="button" class="input-group-text btn-clipboard">
@@ -57,17 +57,17 @@ export default class NotesUpdateModal {
                                 </div>
                                 <div class="d-flex gap-2">
                                     <div class="mb-3 w-100">
-                                        <label class="form-label">VERSAO ATUAL</label>
+                                        <label class="form-label">VERSION ACTUAL</label>
                                         <input id="currentVersion" type="number" class="form-control" value="0" disabled>
                                     </div>
                                     <div class="mb-3 w-100">
-                                        <label class="form-label">NOVA VERSAO</label>
+                                        <label class="form-label">NUEVA VERSION</label>
                                         <input id="newVersion" type="number" class="form-control" value="0" disabled>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-between gap-3">
-                                    <button id="closeButton" type="button" class="btn-responsive w-100">SAIR</button>
-                                    <button id="saveButton" type="button" class="btn-responsive w-100">SALVAR</button>
+                                    <button id="closeButton" type="button" class="btn-responsive w-100">SALIR</button>
+                                    <button id="saveButton" type="button" class="btn-responsive w-100">GUARDAR</button>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +115,7 @@ export default class NotesUpdateModal {
             this.image.value = version.image ?? ''
         } catch (error) {
             console.error(error);
-            showToastError('Erro ao carregar a versão');
+            showToastError('Error al cargar la version');
         } finally {
             this.spinner.classList.add('d-none');
             this._element.querySelector('.area').classList.remove('d-none');
