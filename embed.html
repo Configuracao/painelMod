@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor MPEG-DASH con ClearKey</title>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        video {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            display: block;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Reproductor MPEG-DASH con ClearKey DRM</h1>
+    <video id="videoPlayer" controls></video>
+</div>
+
+<script>
+    // Función para obtener parámetros de la URL
+    function getUrlParameter(name) {
+        name = name.replace(/[]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        var results = regex.exec(window.location.href);
+        if (!results || !results[2]) {
+            return null;
+        }
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Obtiene el archivo MPD y las claves desde la URL
+    var urlMPD = getUrlParameter('get');
+    var keyId = getUrlParameter('key');
+    var key = getUrlParameter('key2');
+
+    if (urlMPD && keyId && key) {
+        // Inicializa el reproductor Dash.js
+        var player = dashjs.MediaPlayer().create();
+        var video = document.getElementById('videoPlayer');
+
+        // Configuración de ClearKey para Dash.js
+        player.initialize(video, urlMPD, true);
+        player.setProtectionData({
+            "org.w3.clearkey": {
+                "clearkeys": {
+                    [keyId]: key
+                }
+            }
+        });
+
+        // Inicia el reproductor
+        player.attachView(video);
+
+        // Monitorea errores (opcional)
+        player.on(dashjs.MediaPlayer.events.ERROR, function (e) {
+            console.error('Error del reproductor:', e);
+        });
+    } else {
+        alert('Faltan parámetros en la URL (get, key, key2).');
+    }
+</script>
+
+</body>
+</html>
