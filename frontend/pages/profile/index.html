@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="../static/css/bootstrap.css">
   <link rel="stylesheet" href="../static/css/sidebar.css">
   <link rel="stylesheet" href="../static/css/header.css">
-  <script src="../static/js/dark_light.js"></script>
   <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
   <meta name="csrf-token" content="<%= it.csrfToken %>">
 </head>
@@ -38,16 +37,19 @@
                 </div>
               </div>
               <div class="row mt-2">
-                <div class="col-md-6 mb-3">
-                  <div class="mb-3">
+                <div class="col-md-12 mb-3">
+                  <div class="mb-5">
                     <label for="id" class="form-label">ID</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-key-fill"></i>
                       <input type="text" class="form-control" id="id" name="id" value="<%= it.user.id %>" readonly>
+                      <button class="input-group-text  border border-1" type="button" onclick="copyToken()">
+                        <i class="bi bi-clipboard"></i>
+                      </button>
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="username" class="form-label">Nombre de usuário</label>
+                    <label for="username" class="form-label">Nome de usuário</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-person-fill"></i>
                       <input type="text" class="form-control" id="username" name="username" value="<%= it.user.username %>">
@@ -71,7 +73,7 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirme Contraseña</label>
+                    <label for="confirm_password" class="form-label">Confirme a senha</label>
                     <div class="input-group">
                       <i class="input-group-text bi bi-lock-fill"></i>
                       <input type="password" class="form-control" id="confirm_password" name="confirm_password">
@@ -81,14 +83,7 @@
                     </div>
                   </div>
                   <div class="d-flex justify-content-center ">
-                    <button type="submit" class="btn btn-dark w-100 __btn__save">Guardar</button>
-                  </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="email" class="form-label">Credencial</label>
-                  <textarea class="form-control mb-3" id="credentials" style="height: 180px;" name="credentials" readonly></textarea>
-                  <div class="d-flex justify-content-center ">
-                    <button type="submit" class="btn btn-dark w-100 __btn__copy">Copiar</button>
+                    <button type="submit" class="btn btn-dark w-100 __btn__save">Salvar</button>
                   </div>
                 </div>
               </div>
@@ -107,24 +102,18 @@
   <script src="../static/js/utils.js"></script>
 
   <script>
-    const user_id = '<%= it.user.id %>'
-    const token = '<%= it.user.id %>'
-    let csrfToken = getCsrfTokenHead();
 
-    const credentials = document.getElementById('credentials')
-    credentials.value = JSON.stringify({
-      user_id,
-      token,
-    }, null, 4)
 
-    const copyBtn = document.querySelector('.__btn__copy')
-    copyBtn.addEventListener('click', () => {
+    function copyToken() {
+      const credentials = document.querySelector('#id')
       credentials.select()
       credentials.setSelectionRange(0, 99999)
       document.execCommand('copy')
       document.getSelection().removeAllRanges()
-      showToastSuccess('Copiado con exito!')
-    })
+      showToastSuccess('Copiado com sucesso!')
+    }
+
+    let csrfToken = getCsrfTokenHead();
 
     const btnSave = document.querySelector('.__btn__save')
     btnSave.addEventListener('click', async () => {
@@ -135,16 +124,16 @@
       const confirm_password = document.getElementById('confirm_password').value || null
 
       if (password !== confirm_password) {
-        showToastError('Contraseña no son compatibles!')
+        showToastError('As senhas não conferem!')
         return
       }
 
       if (password && password.length < 6) {
-        showToastError('Contraseña muy corta, debe tener al menos 6 caracteres!')
+        showToastError('Senha muito curta, deve conter pelo menos 6 caracteres!')
         return
       }
 
-      // showToastInfo('Guardando perfil...')
+      // showToastInfo('Salvando perfil...')
 
       try {
 
@@ -166,7 +155,7 @@
         if (csrfTokenRefresh) csrfToken = csrfTokenRefresh;
 
         if (response.status === 200) {
-          showToastSuccess('Perfil guardado con exito!')
+          showToastSuccess('Perfil salvo com sucesso!')
           return;
         }
 
@@ -178,7 +167,7 @@
         }
 
       } catch (err) {
-        showToastError('No fue posible alterar sus datos')
+        showToastError('Não foi possível alterar seus dados')
       }
     })
 
@@ -195,6 +184,8 @@
       }
     }
   </script>
+
+  <script src="../static/js/dark_light.js"></script>
 </body>
 
 </html>
