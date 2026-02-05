@@ -252,12 +252,7 @@ const createInputApp = (config) => {
     return columns;
 }
 
-let listenerStatus = 0;
-
-const setListener = (appConfigList) => {
-
-    if (listenerStatus != 0) return;
-    
+const renderCard = (root, appConfigList) => {
     const cardDefault = new CardDefault();
 
     cardDefault.setOnBtnCreateClick(() => appConfigList.notify('create', null));
@@ -269,7 +264,6 @@ const setListener = (appConfigList) => {
         appConfigList.notify('import', config);
         appConfigImportModal.modal.hide();
     })
-
     cardDefault.setOnBtnImportClick(() => appConfigImportModal.show());
 
     cardDefault.setOnBtnSyncClick(() => showAlertConfirm(() => appConfigList.notify('sync', null)));
@@ -277,9 +271,7 @@ const setListener = (appConfigList) => {
     const apkDownloadModal = new ApkDownloadModal();
     cardDefault.setOnBtnApkDownloadClick(() => apkDownloadModal.show());
 
-    //root.appendChild(cardDefault.element);
-
-    listenerStatus++;
+    root.appendChild(cardDefault.element);
 }
 
 const renderApp = appConfigList => {
@@ -287,7 +279,7 @@ const renderApp = appConfigList => {
     root.innerHTML = '';
 
     if (appConfigList.items.length == 0)
-        return; //renderCard(root, appConfigList);
+        return renderCard(root, appConfigList);
 
     appConfigList.items.forEach(async item => {
 
@@ -301,7 +293,7 @@ const renderApp = appConfigList => {
         footer.setStyle({
             display: 'flex',
             justifyContent: 'space-between',
-            background: '#19458778',
+            background: '#ffffff29',
             width: '100%',
             padding: '2px',
             borderRadius: '50px',
@@ -323,7 +315,7 @@ const renderApp = appConfigList => {
         root.appendChild(container.element);
     });
 
-    //renderCard(root, appConfigList);
+    renderCard(root, appConfigList);
     
 }
 
@@ -346,8 +338,6 @@ const main = async () => {
     const pagination = new Pagination();
     const appConfigList = new AppConfigList();
 
-    const status = document.querySelector("#app_config_status").value;
-
     const getConfigApp = async () => {
         appConfigList.clear();
 
@@ -356,7 +346,7 @@ const main = async () => {
 
         try {
 
-            const response = await fetch(`/app_layout/list?offset=${offset}&limit=${limit}&status=${status}`, {
+            const response = await fetch(`/app_layout/list?offset=${offset}&limit=${limit}`, {
                 headers: {}
             });
 
@@ -376,7 +366,6 @@ const main = async () => {
             closeLoading();
 
         } catch (e) {
-            console.log(e)
             const error = new InternalError(document.querySelector('.content'));
             error.render();
             return;
@@ -468,10 +457,9 @@ const main = async () => {
                 main();
                 return;
             }
-                
+            
             const result = await response.json();
             if (result.message) {
-                main();
                 showToastError(result.message);
                 return;
             }
@@ -559,13 +547,6 @@ const main = async () => {
             getConfigApp();
         }
     });
-
-    setListener(appConfigList);
-
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#app_config_status').addEventListener('change', () => main());
-});
 
 main();
