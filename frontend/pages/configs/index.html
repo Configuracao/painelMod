@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="../static/css/bootstrap.css">
   <link rel="stylesheet" href="../static/css/sidebar.css">
   <link rel="stylesheet" href="../static/css/header.css">
-  
+  <script src="../static/js/dark_light.js"></script>
   <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
   <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" rel="stylesheet" />
   <meta name="csrf-token" content="<%= it.csrfToken %>">
@@ -31,18 +31,18 @@
       <div class="content pt-1 overflow-auto">
         <div class="card shadow border border-0 overflow-auto h-100">
           <div class="card-body m-0">
-            <h1 class="h3 mb-4 text-gray-800 text-uppercase">Configurações</h1>
+            <h1 class="h3 mb-4 text-gray-800 text-uppercase">Configuraciones</h1>
             <div class="d-md-flex justify-content-between mb-3 align-items-center">
               <div class="d-flex flex-column mb-1">
                 <div class="d-flex">
                   <div class="mb-1 me-1">
                     <select class="form-select config-status" style="width: auto">
                       <option value="ACTIVE">
-                        ATIVO</option>
+                        ACTIVO</option>
                       <option value="INACTIVE">
-                        INATIVO</option>
+                        INACTIVO</option>
                       <option value="ALL">
-                        TUDO
+                        TODO
                       </option>
                     </select>
                   </div>
@@ -58,7 +58,7 @@
                 <div class="d-flex mb-1" style="min-width: 300px;">
                   <button type="button" class="btn btn-dark flex-fill me-1 w-50 create-config">
                     <i class="bi bi-plus-lg"></i>
-                    <span>ADICIONAR</span>
+                    <span>AGREGAR</span>
                   </button>
                   <button type="button" class="btn btn-dark flex-fill w-50 import-config">
                     <i class="bi bi-file-earmark-arrow-up"></i>
@@ -83,7 +83,7 @@
             </div>
             <div id="root" class="h-100"></div>
             <div class="d-none config-not-found d-flex justify-content-center align-items-center p-3">
-              <h4 class="text-muted text-nowrap">Nenhuma configuração encontrada</h4>
+              <h4 class="text-muted text-nowrap">Ninguna configuracion encontrada</h4>
             </div>
             <div id="pagination"></div>
           </div>
@@ -111,12 +111,12 @@
                                 onclick="table.toggleCheckAll(this.checked)">
                         </th>
                         <th scope="col" class="border-0" placeholder="#">#</th>
-                        <th scope="col" class="border-0" placeholder="Nome">Nome</th>
+                        <th scope="col" class="border-0" placeholder="Nome">Nombree</th>
                         <th scope="col" class="border-0" placeholder="Categoria">Categoria</th>
-                        <th scope="col" class="border-0" placeholder="Ordem">Ordem</th>
+                        <th scope="col" class="border-0" placeholder="Ordem">Orden</th>
                         <th scope="col" class="border-0" placeholder="Modo">Modo</th>
-                        <th scope="col" class="border-0" placeholder="Status">Status</th>
-                        <th scope="col" class="border-0" placeholder="Ações">Ações</th>
+                        <th scope="col" class="border-0" placeholder="Status">Estado</th>
+                        <th scope="col" class="border-0" placeholder="Accion">Comp</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -185,10 +185,7 @@
       }
     }
   </script>
-
-  <script src="../static/js/dark_light.js"></script>
   <script type="module" src="../static/js/config/main.js"></script>
-  
 </body>
 
 </html>
